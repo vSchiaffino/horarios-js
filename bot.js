@@ -138,38 +138,44 @@ class Bot extends Discord.Client{
     }
 
     onMessage(msg){
-        if (msg.content === '.unbind') {
-            this.unbind(msg)
-        }
-        if(msg.content == ".clear"){
-            this.clear(msg)
-        }
-        if(msg.content == ".list"){
-            this.list(msg)
-        }
-        if(msg.content == ".removeall"){
-            horarios = []
-            this.saveSchedules()
-        }
-        if (msg.content.startsWith('.remove ')) {
-            this.remove(msg)
-        }
-        if (msg.content === '.bind') {
-            if(this.canales.includes(msg.channel.id)){
-                msg.react("♿")
-                return
+        try{
+
+            if (msg.content === '.unbind') {
+                this.unbind(msg)
             }
-            this.canales.push(msg.channel.id)
-            this.saveChannels()
-            msg.react("✅")
+            if(msg.content == ".clear"){
+                this.clear(msg)
+            }
+            if(msg.content == ".list"){
+                this.list(msg)
+            }
+            if(msg.content == ".removeall"){
+                horarios = []
+                this.saveSchedules()
+            }
+            if (msg.content.startsWith('.remove ')) {
+                this.remove(msg)
+            }
+            if (msg.content === '.bind') {
+                if(this.canales.includes(msg.channel.id)){
+                    msg.react("♿")
+                    return
+                }
+                this.canales.push(msg.channel.id)
+                this.saveChannels()
+                msg.react("✅")
+            }
+            if(msg.content.startsWith(".add ")){
+                this.add(msg)
+            }
+            if(msg.content.startsWith(".set ")){
+                let c = msg.content.replace(".set ", "")
+                this.horarios = JSON.parse(c)
+                this.saveSchedules()
+            }
         }
-        if(msg.content.startsWith(".add ")){
-            this.add(msg)
-        }
-        if(msg.content.startsWith(".set ")){
-            let c = msg.content.replace(".set ", "")
-            this.horarios = JSON.parse(c)
-            this.saveSchedules()
+        catch(err){
+            console.log(err)
         }
     }
 }
