@@ -4,8 +4,8 @@
   "description": "",
   "main": "main.js",
   "scripts": {
-    "run": "nodemon main.js --watch main.js",
-    "build": "node main.js"
+    "dev": "nodemon main.js --watch main.js",
+    "start": "node main.js"
   },
   "author": "",
   "license": "ISC",
