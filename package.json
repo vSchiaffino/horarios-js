@@ -1,0 +1,21 @@
+{
+  "name": "horarios",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "run": "nodemon main.js --watch main.js",
+    "build": "node main.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "cron": "^1.8.2",
+    "discord": "^0.8.2",
+    "discord.js": "^12.5.3",
+    "dotenv": "^8.2.0",
+    "fs": "0.0.1-security",
+    "node-cron": "^3.0.0",
+    "nodemon": "^2.0.7"
+  }
+}
